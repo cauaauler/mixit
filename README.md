@@ -1,1 +1,9 @@
-Have you ever dreamed of a place where you can explore and create your own little treasure trove of anime, manga, movies, series, books, and games — all together in one magical site?
+Anotações:
+
+1- Preciso pensar a linguagem que vou fazer isso aqui. Provável que usarei C# + Angular + SQLServer ou MongoDB.
+2- Preciso de muitas ideias pra isso aqui kkkkkkkkkkkk.
+3- Mudar o nome.
+4- Não desistir de mais um projeto no meio.
+
+Inspirações:
+
