@@ -1,12 +1,13 @@
+Stack MERN - React + Node.js + Express.js + MongoDB
+
 Anotações:
 
-1- Preciso pensar a linguagem que vou fazer isso aqui. Provável que usarei C# + Angular + SQLServer ou MongoDB.
+
+1- Preciso de muitas ideias pra isso aqui kkkkkkkkkkkk.
 <br>
-2- Preciso de muitas ideias pra isso aqui kkkkkkkkkkkk.
+2- Mudar o nome.
 <br>
-3- Mudar o nome.
-<br>
-4- Não desistir de mais um projeto no meio.
+3- Não desistir de mais um projeto no meio.
 
 Inspirações:
 
