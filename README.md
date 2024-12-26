@@ -11,6 +11,8 @@ Anotações:
 
 Inspirações:
 
+API: 
 
+ANILIST: https://github.com/AniList/ApiV2-GraphQL-Docs.git
 
 P.S.: Feliz Natal 🎅 
