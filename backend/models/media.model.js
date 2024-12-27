@@ -25,6 +25,8 @@ const mediaSchema = new mongoose.Schema({
         type: Number,
         required: false
     }
+}, {
+    timestamps: true, // Cria os campos createdAt e updatedAt
 });
 
 const Media = mongoose.model('Media', mediaSchema);
