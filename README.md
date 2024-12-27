@@ -15,4 +15,8 @@ API:
 
 ANILIST: https://github.com/AniList/ApiV2-GraphQL-Docs.git
 
+Bibliotecas e Frameworks adicionais:
+
+https://www.chakra-ui.com/
+
 P.S.: Feliz Natal 🎅 
