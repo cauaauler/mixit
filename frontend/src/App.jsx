@@ -5,10 +5,10 @@ import HomePage from "./pages/HomePage";
 function App() {
 	return (
 		<>
-    {/* <Box minH={"100vh"}></Box>
+    <Box minH={"100vh"}></Box>
     <Routes>
       <Route path="/" element={<HomePage />} />
-    </Routes> */}
+    </Routes> 
 			<Button colorScheme="teal">Clique Aqui</Button>
 		</>
 	);
