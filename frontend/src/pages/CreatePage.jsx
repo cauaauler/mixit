@@ -2,7 +2,6 @@
 import { Box, Button, Container, Heading } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { create } from "zustand";
 import { useMediaStore } from "../store/media.js";
 
 function CreatePage() {
@@ -23,6 +22,12 @@ function CreatePage() {
     console.log(sucess, message);
   };
 
+  const {getMedia} = useMediaStore();
+  const handleListmedia = async() => {
+    const {sucess, data} = await getMedia();
+    console.log(sucess, data);
+  };
+
 	return (
 		<Container>
 			<Box textAlign="center" py={10}>
@@ -34,6 +39,7 @@ function CreatePage() {
 			<Input placeholder="Type" name="type" onChange={(e) => setMedia({ ...media, type: e.target.value })} />
 			<Input placeholder="Release Date" name="releaseDate" onChange={(e) => setMedia({ ...media, releaseDate: e.target.value })} />
 			<Button colorScheme="teal" onClick={handleAddmedia}></Button>
+			<Button colorScheme="teal" onClick={handleListmedia}></Button>
 		</Container>
 	);
 }
