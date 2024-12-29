@@ -17,15 +17,15 @@ function CreatePage() {
 	]);
 
   const {createMedia} = useMediaStore();
-	const handleAddmedia = async() => {
+	const handleCreateMedia = async() => {
     const {sucess, message} = await createMedia(media);
     console.log(sucess, message);
   };
 
   const {getMedia} = useMediaStore();
-  const handleListmedia = async() => {
-    const {sucess, data} = await getMedia();
-    console.log(sucess, data);
+  const handleGetMedia = async() => {
+    const {success, data} = await getMedia();
+    console.log(success, data);
   };
 
 	return (
@@ -38,8 +38,8 @@ function CreatePage() {
 			<Input placeholder="Image" name="image" onChange={(e) => setMedia({ ...media, image: e.target.value })} />
 			<Input placeholder="Type" name="type" onChange={(e) => setMedia({ ...media, type: e.target.value })} />
 			<Input placeholder="Release Date" name="releaseDate" onChange={(e) => setMedia({ ...media, releaseDate: e.target.value })} />
-			<Button colorScheme="teal" onClick={handleAddmedia}></Button>
-			<Button colorScheme="teal" onClick={handleListmedia}></Button>
+			<Button colorScheme="teal" onClick={handleCreateMedia}></Button>
+			<Button colorScheme="teal" onClick={handleGetMedia}></Button>
 		</Container>
 	);
 }

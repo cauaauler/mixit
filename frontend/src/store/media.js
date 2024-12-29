@@ -30,7 +30,7 @@ export const useMediaStore = create((set) => ({
 
             const data = await res.json();
 
-            return { success: true, data: data.data };
+            return { success: true, data: data.data, message: 'Media fetched successfully' };
         } catch (error) {
             console.error("Error fetching media:", error);
             return { success: false, message: 'Failed to fetch media' };
