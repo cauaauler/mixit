@@ -19,3 +19,4 @@ Bibliotecas e Frameworks adicionais:
 https://www.chakra-ui.com/
 
 P.S.: Feliz Natal 🎅 
+P.S.: Feliz Ano Novo ⭐ -- Começando o ano bem, consegui consumir a primeira API :)
