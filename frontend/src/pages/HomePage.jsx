@@ -1,5 +1,5 @@
-import { Box, Heading, Spinner, Alert, Input, Button } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Box, Heading, Spinner, Alert, Input, Button, HStack } from "@chakra-ui/react";
+import { useState } from "react";
 import axios from "axios";
 
 function Loading() {
@@ -24,39 +24,48 @@ function App() {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-	const [search, setSearch] = useState(""); // Nome a ser pesquisado
+	const [search, setSearch] = useState("");
+	const [page, setPage] = useState(1); // Página atual
+	const [hasResults, setHasResults] = useState(false);
+	const [hasMore, setHasMore] = useState(true); // Controla se há mais páginas disponíveis
+	
+	const resultsPerPage = 10;
 
-	const fetchData = async (searchQuery) => {
+	const fetchData = async (searchQuery, pageNumber) => {
 		setLoading(true);
 		setError(null);
 
-		const url = process.env.REACT_APP_API_URL || "https://graphql.anilist.co";
+		const url = "https://graphql.anilist.co";
 		const query = `
-      query ($search: String) {
-        Media(type: ANIME, sort: POPULARITY_DESC, search: $search) {
-          id
-          title {
-            romaji
-            english
-            native
+      query ($search: String, $page: Int) {
+        Page(page: $page, perPage: ${resultsPerPage}) {
+          media(type: ANIME, sort: POPULARITY_DESC, search: $search) {
+            id
+            title {
+              romaji
+              english
+              native
+            }
           }
         }
       }
     `;
 
 		try {
-			console.log("Buscando dados para:", searchQuery); // Log para depuração
 			const response = await axios.post(url, {
 				query,
-				variables: { search: searchQuery },
+				variables: { search: searchQuery, page: pageNumber },
 			});
-			const fetchedData = response.data.data.Media.map((media) => ({
+
+			const fetchedData = response.data.data.Page.media.map((media) => ({
 				id: media.id,
 				name: media.title.romaji || media.title.english || media.title.native,
 			}));
 
-			// Limitar a 5 resultados
-			setData(fetchedData.slice(0, 5)); // Limita os resultados para no máximo 5
+			setData(fetchedData);
+			// Verifica se há mais resultados baseando-se no tamanho do array retornado
+			// true se 10 resultados, false se menos
+			setHasMore(fetchedData.length === resultsPerPage);
 		} catch (err) {
 			console.error("Erro ao buscar dados:", err);
 			setError("Não foi possível carregar os dados. Tente novamente mais tarde.");
@@ -66,11 +75,32 @@ function App() {
 	};
 
 	const handleSearch = () => {
-		if (search.trim()) {
-			fetchData(search);
+		const trimmedSearch = search.trim();
+		if (trimmedSearch) {
+			setPage(1); // Reset para a primeira página
+			fetchData(trimmedSearch, 1);
+			setHasResults(true);
 		} else {
 			setData([]);
 			setError(null);
+			setHasMore(false);
+			setHasResults(false);
+		}
+	};
+
+	const handleNextPage = () => {
+		if (hasMore) {
+			const nextPage = page + 1;
+			setPage(nextPage);
+			fetchData(search, nextPage);
+		}
+	};
+
+	const handlePreviousPage = () => {
+		if (page > 1) {
+			const previousPage = page - 1;
+			setPage(previousPage);
+			fetchData(search, previousPage);
 		}
 	};
 
@@ -94,12 +124,22 @@ function App() {
 
 			{!loading && !error && data.length > 0 && (
 				<Box textAlign="center" py={10}>
-					<h1>Resultados da Pesquisa</h1>
+					<Heading size="md" mb={4}>
+						Resultados da Pesquisa
+					</Heading>
 					<DataList data={data} />
+					<HStack justify="center" mt={4}>
+						<Button onClick={handlePreviousPage} disabled={page === 1}>
+							Página Anterior
+						</Button>
+						<Button onClick={handleNextPage} disabled={!hasMore}>
+							Próxima Página
+						</Button>
+					</HStack>
 				</Box>
 			)}
 
-			{!loading && !error && data.length === 0 && search.trim() && (
+			{hasResults && !loading && !error && data.length === 0 && (
 				<Box textAlign="center" py={10}>
 					<Alert status="info">Nenhum resultado encontrado.</Alert>
 				</Box>
