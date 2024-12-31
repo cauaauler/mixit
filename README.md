@@ -6,7 +6,7 @@ Anotações:
 
 1- Mudar o nome.
 <br>
-2- Não desistir desse projeto na metado ;)
+2- Não desistir desse projeto na metade 😁😁
 
 Inspirações:
 
