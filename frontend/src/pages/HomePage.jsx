@@ -3,7 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useMediaStore } from "../store/media.js";
 
-
 function Loading() {
 	return (
 		<Box textAlign="center" py={10}>
@@ -11,21 +10,33 @@ function Loading() {
 		</Box>
 	);
 }
+const urlAnime = "https://anilist.co/anime/";
 
 function DataList({ data, onCreateMedia }) {
 	return (
-		<ul>
+		<ul
+			style={{
+				listStyleType: "none",
+				padding: "0",
+				margin: "0",
+			}}
+		>
 			{data.map((item) => (
 				<li
 					key={item.id}
 					style={{
 						display: "flex",
-						justifyContent: "space-between",
+						justifyContent: "center",
 						alignItems: "center",
 						marginBottom: "8px",
+						gap: "1em",
 					}}
 				>
-					<span>{item.name}</span>
+					<img src={item.coverImage} alt="" />
+
+					<a href={urlAnime + item.id} target="_blank">
+						{item.name}
+					</a>
 					<Button
 						colorScheme="teal"
 						size="sm"
@@ -54,11 +65,10 @@ function App() {
 	const [hasMore, setHasMore] = useState(true);
 
 	const resultsPerPage = 10;
-	const {createMedia} = useMediaStore();
+	const { createMedia } = useMediaStore();
 	const addMedia = async (media) => {
-
-			const { sucess, message } = await createMedia(media);
-			console.log(sucess, message);
+		const { sucess, message } = await createMedia(media);
+		console.log(sucess, message);
 	};
 
 	const fetchData = async (searchQuery, pageNumber) => {
@@ -69,13 +79,21 @@ function App() {
 		const query = `
       query ($search: String, $page: Int) {
         Page(page: $page, perPage: ${resultsPerPage}) {
-          media(type: ANIME, sort: POPULARITY_DESC, search: $search) {
+          media(type: ANIME,
+		   sort: POPULARITY_DESC,
+		    search: $search,
+			isAdult: false
+			) {
             id
             title {
-              romaji
-              english
-              native
+				romaji
+				english
+				native
             }
+			coverImage {
+				large
+			}
+			
           }
         }
       }
@@ -90,6 +108,7 @@ function App() {
 			const fetchedData = response.data.data.Page.media.map((media) => ({
 				id: media.id,
 				name: media.title.romaji || media.title.english || media.title.native,
+				coverImage: media.coverImage.large,
 			}));
 
 			setData(fetchedData);
