@@ -6,7 +6,7 @@ Anotações:
 
 1- Mudar o nome.
 <br>
-2- Não desistir de mais um projeto no meio.
+2- Não desistir desse projeto na metade 😁😁
 
 Inspirações:
 
@@ -18,4 +18,8 @@ Bibliotecas e Frameworks adicionais:
 
 https://www.chakra-ui.com/
 
-P.S.: Feliz Natal 🎅 
+P.S.
+<br>
+Feliz Natal 🎅 
+<br>
+Feliz Ano Novo ⭐ -- Começando o ano bem, consegui consumir a primeira API :)
