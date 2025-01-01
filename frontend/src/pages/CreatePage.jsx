@@ -7,6 +7,7 @@ import { useMediaStore } from "../store/media.js";
 function CreatePage() {
 	const [media, setMedia] = useState([
 		{
+			idAniList: "",
 			name: "",
 			description: "",
 			image: "",

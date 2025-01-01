@@ -5,7 +5,7 @@ export const useMediaStore = create((set) => ({
     media: [],
     setMedia: (media) => set({ media }),
     createMedia: async (newMedia) => {
-        if (!newMedia.name || !newMedia.type) {
+        if (!newMedia.name ) {
             return ({ sucess: false, message: 'Name and type are required' });
         }
         const res = await fetch("/api/media", {
