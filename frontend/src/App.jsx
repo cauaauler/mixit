@@ -4,7 +4,7 @@ import {useMediaStore} from "./store/media.js";
 
 import Navbar from "./components/Navbar";
 
-import HomePage from "./pages/HomePage";
+import AnimePage from "./pages/AnimePage";
 import CreatePage from "./pages/CreatePage";
 
 
@@ -16,7 +16,7 @@ function App() {
 			<Box minH={"100vh"}>
 				<Navbar />
 				<Routes>
-					<Route path="/" element={<HomePage />} />
+					<Route path="/" element={<AnimePage />} />
 					<Route path="/create" element={<CreatePage />} />
 				</Routes>
 				<Button colorScheme="teal">Clique Aqui</Button>

@@ -37,7 +37,6 @@ export const updateMedia = async (req, res) => {
     }
 };
 
-
 export const getMedia = async (req, res) => {
     try {
         const media = await Media.find();
