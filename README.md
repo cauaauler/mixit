@@ -12,7 +12,15 @@ ANILIST: https://github.com/AniList/ApiV2-GraphQL-Docs.git
 
 Bibliotecas e Frameworks adicionais:
 
-https://www.chakra-ui.com/
+CHACKRA UI - https://www.chakra-ui.com/
+<br>
+MONGOOSE - https://mongoosejs.com/
+<br>
+EXPRESS - https://expressjs.com/pt-br/
+<br>
+AXIOS - https://axios-http.com/ptbr/
+<br>
+DOTENV - https://www.npmjs.com/package/dotenv
 
 P.S.
 <br>
