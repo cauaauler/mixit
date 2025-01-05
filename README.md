@@ -2,11 +2,7 @@ Stack MERN - React + Node.js + Express.js + MongoDB
 
 Anotações:
 
-
-
 1- Mudar o nome.
-
-Inspirações:
 
 API: 
 
