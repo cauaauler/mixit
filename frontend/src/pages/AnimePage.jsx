@@ -26,13 +26,13 @@ function DataList({ data, onCreateMedia }) {
 					key={item.id}
 					style={{
 						display: "flex",
-						justifyContent: "center",
+						flexDirection: "column",
 						alignItems: "center",
-						marginBottom: "8px",
+						marginBottom: "16px",
 						gap: "1em",
 					}}
 				>
-					<img src={item.coverImage} alt="" />
+					<img src={item.coverImage} alt="" style={{ width: "150px", height: "225px" }} />
 
 					<a href={urlAnime + item.id} target="_blank">
 						{item.name}
@@ -49,11 +49,14 @@ function DataList({ data, onCreateMedia }) {
 					>
 						Salvar
 					</Button>
+
+						
 				</li>
 			))}
 		</ul>
 	);
 }
+
 
 function App() {
 	const [data, setData] = useState([]);
@@ -79,7 +82,7 @@ function App() {
 		const query = `
       query ($search: String, $page: Int) {
         Page(page: $page, perPage: ${resultsPerPage}) {
-          media(type: ANIME,
+          media(
 		   sort: POPULARITY_DESC,
 		    search: $search,
 			isAdult: false
@@ -93,8 +96,19 @@ function App() {
 			coverImage {
 				large
 			}
-			
+					relations {
+				edges {
+					relationType
+						node {
+						id
+						title {
+							romaji
+						}
+					}
+				}
+			}
           }
+		
         }
       }
     `;
