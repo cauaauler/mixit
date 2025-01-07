@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const mediaSchema = new mongoose.Schema({
-    idAniList:{
+    id: {
         type: String,
         required: true
     },
@@ -11,19 +11,19 @@ const mediaSchema = new mongoose.Schema({
     }, 
     description: {
         type: String,
-        required: false
+        required: true
     },
     image: {
         type: String,
-        required: false
+        required: true
     },
     type: {
         type: String,
-        required: false
+        required: true
     },
     releaseDate: {
         type: String,
-        required: false
+        required: true
     },
     rating: {
         type: Number,

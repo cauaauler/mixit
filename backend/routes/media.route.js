@@ -1,15 +1,20 @@
 import express from 'express';
 import { getMedia, updateMedia, createMedia, getMediaById, deleteMedia } from '../controllers/media.controller.js';
+import { register, login } from '../controllers/user.controller.js';
 
 // Cria o roteador
 const mediaRouter = express.Router();
 
-// Define as rotas e associa os controladores
-mediaRouter.post('/', createMedia);
-mediaRouter.get('/:id', getMediaById);
-mediaRouter.get('/', getMedia);
-mediaRouter.put('/:id', updateMedia);
-mediaRouter.delete('/:id', deleteMedia);
+// Rotas Media
+mediaRouter.post('/media/', createMedia);
+mediaRouter.get('/media/:id', getMediaById);
+mediaRouter.get('/media/', getMedia);
+mediaRouter.put('/media/:id', updateMedia);
+mediaRouter.delete('/media/:id', deleteMedia);
+
+//Rotas User
+mediaRouter.post('/login', login);
+mediaRouter.post('/register', register);
 
 // Exporta o roteador
 export default mediaRouter;

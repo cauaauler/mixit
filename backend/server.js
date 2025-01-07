@@ -10,9 +10,10 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // allow us to accept json from the body
 
-app.use('/api/media', mediaRouter);
+app.use('/api', mediaRouter);
 
 app.listen(PORT, () => {
     connectDB();
     console.log('Server started at https://localhost:' + PORT);
 });
+
