@@ -6,6 +6,9 @@ Anotações:
 
 2- Separar os tipos de media. Anime(Não sei se filme de anime entra aqui, preciso ver como a api funciona), Manga(Light Novel e esses caralhos aqui também eu acho), Filme, Série, Livros e Jogos. Músicas não vou colocar(a princípio) pq tem muitas bibliotecas de música que permitem não só elencar mas também escutar.
 
+3- Validar email e criptografar a senha.
+
+
 API: 
 
 ANILIST: https://github.com/AniList/ApiV2-GraphQL-Docs.git
