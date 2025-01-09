@@ -9,7 +9,7 @@ Anotações:
 3- Validar email e criptografar a senha.
 
 
-API: 
+APIs: 
 
 ANILIST: https://github.com/AniList/ApiV2-GraphQL-Docs.git
 
