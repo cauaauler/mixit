@@ -18,7 +18,26 @@ export const login = ((req, res) => {
 })
 
 export const register = (req, res) => {
-    UserModel.create(req.body)
-        .then(users => res.json(users))
-        .catch(err => res.json(err))
-}
+    const { email, ...userData } = req.body;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        return res.status(400).json({ error: "A valid email is required" });
+    }
+
+    UserModel.findOne({ email })
+        .then(user => {
+            if (user) {
+                return res.status(400).json({ error: "Email already exists" });
+            }
+            else {
+                // Cria o usuário apenas se o e-mail não existir
+                return UserModel.create({ email, ...userData });
+            }
+
+        })
+        .catch(err => {
+            console.error(err); // Log detalhado para depuração
+            res.status(500).json({ error: "Internal server error" }); // Resposta simplificada
+        });
+};
