@@ -8,6 +8,8 @@ Anotações:
 
 3- Validar email e criptografar a senha.
 
+4- Sessões.
+
 
 APIs: 
 
