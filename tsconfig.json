@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "ES6",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"rootDir": "./backend",
+		"outDir": "./dist",
+		"allowImportingTsExtensions": true,
+		"noEmit": true,
+		"allowJs": true
+	},
+	"include": ["backend/**/*.ts", "backend/server.ts", "backend/routes/media.route.ts"]
+}
