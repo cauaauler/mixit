@@ -1,14 +1,15 @@
 {
 	"compilerOptions": {
-		"module": "ESNext",
-		"target": "ES6",
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"rootDir": "./backend",
-		"outDir": "./dist",
-		"allowImportingTsExtensions": true,
-		"noEmit": true,
-		"allowJs": true
+		"module": "ESNext", // Usa ES Modules (import/export)
+		"target": "ES6", // Transpila para ES6
+		"outDir": "./dist", // Diretório de saída dos arquivos compilados
+		"rootDir": "./backend", // Diretório onde estão os arquivos TypeScript
+		"esModuleInterop": true, // Garante compatibilidade entre CommonJS e ESModules
+		"strict": true, // Ativa verificações estritas
+		"skipLibCheck": true, // Ignora verificações de tipos em definições de biblioteca
+		"allowImportingTsExtensions": true, // Permite importar arquivos .ts diretamente
+		"noEmit": true // Permite emitir arquivos compilados
 	},
-	"include": ["backend/**/*.ts", "backend/server.ts", "backend/routes/media.route.ts"]
+	"include": ["backend/**/*.ts"], // Inclui todos os arquivos .ts na pasta backend
+	"exclude": ["node_modules"] // Exclui a pasta node_modules
 }

@@ -3,10 +3,10 @@
 	"version": "1.0.0",
 	"description": "Stack MERN - React + Node.js + Express.js + MongoDB",
 	"scripts": {
-		"start": "node -r ts-node/register ./backend/server.ts",
+		"build": "tsc",
+		"start": "node dist/server.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon --exec ts-node backend/server"
-	},
+		"dev": "nodemon src/server.js"},
 	"type": "module",
 	"keywords": [],
 	"author": "",
