@@ -10,7 +10,7 @@ Anotações:
 
 4- Sessões.
 
-5- Não está rodando
+5- Não está rodando, estou alterando o javascript para ts, mas a api não roda.
 
 
 APIs: 
