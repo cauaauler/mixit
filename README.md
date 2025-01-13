@@ -10,7 +10,8 @@ Anotações:
 
 4- Sessões.
 
-5- Não está rodando, estou alterando o javascript para ts, mas a api não roda.
+5- Não está rodando, estou alterando o javascript para ts, mas a api não roda. Preciso olhar um tutorial.
+
 
 
 APIs: 
