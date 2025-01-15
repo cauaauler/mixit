@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const db_ts_1 = require("./config/db.ts");
-const media_route_ts_1 = __importDefault(require("./routes/media.route.ts"));
+const db_ts_1 = require("./config/db.js");
+const media_route_ts_1 = __importDefault(require("./routes/media.route.js"));
 const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();

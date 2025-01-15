@@ -1,6 +1,6 @@
 import express from 'express';
-import { getMedia, updateMedia, createMedia, getMediaById, deleteMedia } from '../controllers/media.controller';
-import { register, login } from '../controllers/user.controller';
+import { getMedia, updateMedia, createMedia, getMediaById, deleteMedia } from '../controllers/media.controller.ts';
+import { register, login } from '../controllers/user.controller.ts';
 
 // Cria o roteador
 const mediaRouter = express.Router();

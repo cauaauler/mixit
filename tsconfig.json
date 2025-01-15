@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
-		"module": "ESNext", // Usa ES Modules (import/export)
+		"module": "NodeNext",
+		"moduleResolution": "nodenext",
 		"target": "ES6", // Transpila para ES6
 		"outDir": "./dist", // Diretório de saída dos arquivos compilados
 		"rootDir": "./backend", // Diretório onde estão os arquivos TypeScript
