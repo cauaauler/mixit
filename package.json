@@ -4,9 +4,8 @@
 	"description": "Stack MERN - React + Node.js + Express.js + MongoDB",
 	"scripts": {
 		"build": "tsc",
-		"start": "node dist/server.js",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon src/server.ts"
+		"start": "tsx ./backend/server.ts",
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"type": "module",
 	"keywords": [],
@@ -25,6 +24,7 @@
 		"@types/node": "^22.10.5",
 		"nodemon": "^3.1.9",
 		"ts-node": "^10.9.2",
+		"tsx": "^4.19.2",
 		"typescript": "^5.7.3"
 	}
 }
