@@ -32,7 +32,7 @@ function CreatePage() {
 	return (
 		<Container>
 			<Box textAlign="center" py={10}>
-				<Heading>Bem-vindo à Create Page!</Heading>
+				<Heading>Bem-vindo à Create Page!</Heading> 
 			</Box>
 			<Input placeholder="Name" name="name" onChange={(e) => setMedia({ ...media, name: e.target.value })} />
 			<Input placeholder="Description" name="description" onChange={(e) => setMedia({ ...media, description: e.target.value })} />
