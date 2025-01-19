@@ -10,6 +10,7 @@ Anotações:
 
 4- Sessões.
 
+5- Alterar o jsx para tsx.
 
 
 APIs: 
