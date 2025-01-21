@@ -10,7 +10,7 @@ Anotações:
 
 4- Sessões.
 
-5- Alterar o jsx para tsx.
+5- ver login e register, não estão funcionando
 
 
 APIs: 
