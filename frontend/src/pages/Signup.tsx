@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import "../styles/auth.css"; // Reutilizando o mesmo arquivo CSS do Login
 
 function Signup() {
-	const [name, setName] = useState();
-	const [email, setEmail] = useState();
-	const [password, setPassword] = useState();
+	const [name, setName] = useState<String>("");
+	const [email, setEmail] = useState<String>("");
+	const [password, setPassword] = useState<String>("");
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {

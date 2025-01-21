@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import "../styles/auth.css"; // Importa o arquivo CSS personalizado
 
 function Login() {
-	const [email, setEmail] = useState();
-	const [password, setPassword] = useState();
+const [email, setEmail] = useState<string>("");
+const [password, setPassword] = useState<string>("");
+
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {

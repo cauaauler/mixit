@@ -1,13 +1,15 @@
+import React from "react";
+
 import { Button, Box } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
-import {useMediaStore} from "./store/media.js";
+import {useMediaStore} from "./store/media.ts";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar.tsx";
 
-import AnimePage from "./pages/AnimePage";
-import CreatePage from "./pages/CreatePage";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import AnimePage from "./pages/AnimePage.tsx";
+import CreatePage from "./pages/CreatePage.tsx";
+import Signup from "./pages/Signup.tsx";
+import Login from "./pages/Login.tsx";
 
 
 function App() {

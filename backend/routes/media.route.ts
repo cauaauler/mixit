@@ -14,7 +14,7 @@ mediaRouter.delete('/media/:id', deleteMedia);
 
 //Rotas User
 mediaRouter.post('/login', login);
-mediaRouter.post('/register', register);
+mediaRouter.post('/signup', register);
 
 // Exporta o roteador
 export default mediaRouter;

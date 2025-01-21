@@ -1,7 +1,9 @@
 import { Box, Heading, Spinner, Alert, Input, Button, HStack } from "@chakra-ui/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useMediaStore } from "../store/media.js";
+import { useMediaStore } from "../store/media.ts";
+
+const urlAnime = "https://anilist.co/anime/";
 
 function Loading() {
 	return (
@@ -10,9 +12,10 @@ function Loading() {
 		</Box>
 	);
 }
-const urlAnime = "https://anilist.co/anime/";
 
 function DataList({ data, onCreateMedia }) {
+	if (!data || data.length === 0) return null;
+
 	return (
 		<ul
 			style={{
@@ -33,8 +36,7 @@ function DataList({ data, onCreateMedia }) {
 					}}
 				>
 					<img src={item.coverImage} alt="" style={{ width: "150px", height: "225px" }} />
-
-					<a href={urlAnime + item.id} target="_blank">
+					<a href={urlAnime + item.id} target="_blank" rel="noreferrer">
 						{item.name}
 					</a>
 					<Button
@@ -49,32 +51,31 @@ function DataList({ data, onCreateMedia }) {
 					>
 						Salvar
 					</Button>
-
-						
 				</li>
 			))}
 		</ul>
 	);
 }
 
-
-function App() {
-	const [data, setData] = useState([]);
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
-	const [search, setSearch] = useState("");
-	const [page, setPage] = useState(1);
-	const [hasResults, setHasResults] = useState(false);
-	const [hasMore, setHasMore] = useState(true);
+function AnimePage() {
+	const [data, setData] = useState<{ id: number; name: string; coverImage: string }[]>([]);
+	const [loading, setLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string | null>(null);
+	const [search, setSearch] = useState<string>("");
+	const [page, setPage] = useState<number>(1);
+	const [hasResults, setHasResults] = useState<boolean>(false);
+	const [hasMore, setHasMore] = useState<boolean>(true);
 
 	const resultsPerPage = 10;
 	const { createMedia } = useMediaStore();
+
 	const addMedia = async (media) => {
-		const { sucess, message } = await createMedia(media);
-		console.log(sucess, message);
+		const { success, message } = await createMedia(media);
+		console.log(success, message);
 	};
 
-	const fetchData = async (searchQuery, pageNumber) => {
+	const fetchData = async (searchQuery: string, pageNumber: number) => {
+		if (loading) return; // Evita múltiplas requisições simultâneas
 		setLoading(true);
 		setError(null);
 
@@ -83,32 +84,20 @@ function App() {
       query ($search: String, $page: Int) {
         Page(page: $page, perPage: ${resultsPerPage}) {
           media(
-		   sort: POPULARITY_DESC,
-		    search: $search,
-			isAdult: false
-			) {
+            sort: POPULARITY_DESC,
+            search: $search,
+            isAdult: false
+          ) {
             id
             title {
-				romaji
-				english
-				native
+              romaji
+              english
+              native
             }
-			coverImage {
-				large
-			}
-					relations {
-				edges {
-					relationType
-						node {
-						id
-						title {
-							romaji
-						}
-					}
-				}
-			}
+            coverImage {
+              large
+            }
           }
-		
         }
       }
     `;
@@ -125,11 +114,11 @@ function App() {
 				coverImage: media.coverImage.large,
 			}));
 
-			setData(fetchedData);
+			setData((prevData) => (pageNumber === 1 ? fetchedData : [...prevData, ...fetchedData]));
 			setHasMore(fetchedData.length === resultsPerPage);
 		} catch (err) {
 			console.error("Erro ao buscar dados:", err);
-			setError("Não foi possível carregar os dados. Tente novamente mais tarde.");
+			setError("Erro ao carregar dados. Tente novamente mais tarde.");
 		} finally {
 			setLoading(false);
 		}
@@ -168,7 +157,7 @@ function App() {
 	return (
 		<div>
 			<Box textAlign="center" py={10}>
-				<Heading>Bem-vindo à Home Page!</Heading>
+				<Heading>Bem-vindo à Página de Animes!</Heading>
 				<Input placeholder="Digite o nome do anime" value={search} onChange={(e) => setSearch(e.target.value)} mt={4} width="300px" />
 				<Button onClick={handleSearch} colorScheme="blue" mt={4}>
 					Pesquisar
@@ -209,4 +198,4 @@ function App() {
 	);
 }
 
-export default App;
+export default AnimePage;
