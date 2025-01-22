@@ -22,7 +22,7 @@ const [password, setPassword] = useState<string>("");
 			 "password": password })
 			.then((result) => {
 				console.log(result);
-				if (result.data === "Success") {
+				if (result.status == 200) {
 					navigate("/home");
 				} else {
 					navigate("/signup");

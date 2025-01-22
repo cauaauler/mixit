@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
-import UserModel from "../models/user.model";
+import UserModel from "../models/user.model.ts";
 
 // Função de login
 export const login = async (req: Request, res: Response): Promise<any> => {

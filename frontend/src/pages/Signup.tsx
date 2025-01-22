@@ -17,7 +17,7 @@ function Signup() {
 			return;
 		}
 		axios
-			.post("http://localhost:5000/api/register", {
+			.post("http://localhost:5000/api/signup", {
             "name": name,
             "email": email,
             "password": password })
