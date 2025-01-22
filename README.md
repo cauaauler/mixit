@@ -10,7 +10,7 @@ Anotações:
 
 4- Sessões.
 
-5- ver login e register, não estão funcionando
+5- colocar uma mensagem de sucesso no register
 
 
 APIs: 
