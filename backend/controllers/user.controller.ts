@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 import UserModel from "../models/user.model.ts";
+import validator from "validator";
 
 // Função de login
 export const login = async (req: Request, res: Response): Promise<any> => {
@@ -34,7 +35,13 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 // Função de registro
 export const register = async (req: Request, res: Response): Promise<any> => {
 	try {
-		const { email, ...userData } = req.body;
+		const { email, name, ...userData } = req.body;
+
+		//Validações básicas
+		const nameRegex = /^[a-zA-Z0-9_.-]+$/;
+		if (!nameRegex.test(name)) {
+			return res.status(400).json({ error: "A valid name is required" });
+		}
 
 		// Validações de e-mail
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
