@@ -10,8 +10,6 @@ Anotações:
 
 4- Sessões.
 
-5- a verificação do backend do nome não está funcionando
-
 
 APIs: 
 
