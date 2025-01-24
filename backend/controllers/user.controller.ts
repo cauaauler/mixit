@@ -38,9 +38,11 @@ export const register = async (req: Request, res: Response): Promise<any> => {
 		const { email, name, ...userData } = req.body;
 
 		//Validações básicas
-		const nameRegex = /^[a-zA-Z0-9_.-]+$/;
-		if (!nameRegex.test(name)) {
-			return res.status(400).json({ error: "A valid name is required" });
+		// Validações básicas
+		const nameRegex = /^[a-zA-Zà-úÀ-Ú\s0-9'-]+$/;
+
+		if (!name || !nameRegex.test(name)) {
+			return res.status(400).json({ error: "A valid name is required (letters, spaces, '-' and ' only)" });
 		}
 
 		// Validações de e-mail
