@@ -10,7 +10,7 @@ Anotações:
 
 4- Sessões.
 
-5- colocar uma mensagem de sucesso no register
+5- a verificação do backend do nome não está funcionando
 
 
 APIs: 
