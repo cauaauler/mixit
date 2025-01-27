@@ -1,35 +1,38 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "../styles/auth.css"; // Importa o arquivo CSS personalizado
 
 function Login() {
-const [email, setEmail] = useState<string>("");
-const [password, setPassword] = useState<string>("");
-
+	const [email, setEmail] = useState<string>("");
+	const [password, setPassword] = useState<string>("");
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (!email || !password) {
 			alert("Please fill in both email and password.");
 			return;
 		}
+
 		axios
 			.post("http://localhost:5000/api/login", {
-			 "email": email,
-			 "password": password })
+				email,
+				password,
+			})
 			.then((result) => {
-				console.log(result);
-				if (result.status == 200) {
-					navigate("/home");
+				if (result.status === 200) {
+					// Armazena o token JWT no localStorage
+					localStorage.setItem("userToken", result.data.token);
+					navigate("/AnimePage");
 				} else {
-					navigate("/signup");
-					alert("You are not registered to this service");
+					alert("You are not registered for this service.");
 				}
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				console.error(err);
+				alert("Login failed. Please try again.");
+			});
 	};
 
 	return (

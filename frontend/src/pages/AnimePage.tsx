@@ -1,6 +1,7 @@
 import { Box, Heading, Spinner, Alert, Input, Button, HStack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useMediaStore } from "../store/media.ts";
 
 const urlAnime = "https://anilist.co/anime/";
@@ -68,6 +69,33 @@ function AnimePage() {
 
 	const resultsPerPage = 10;
 	const { createMedia } = useMediaStore();
+
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const token = localStorage.getItem("userToken");
+
+		if (!token) {
+			navigate("/login"); // Redireciona para login se não estiver autenticado
+		} else {
+			axios
+				.get("http://localhost:5000/api/validate-token", {
+					headers: {
+						Authorization: `Bearer ${token}`, // Envia o token no cabeçalho
+					},
+				})
+				.then((response) => {
+					if (response.status !== 200) {
+						navigate("/login");
+					}
+				})
+				.catch((err) => {
+					console.error(err);
+					navigate("/login");
+				});
+		}
+	}, [navigate]);
+
 
 	const addMedia = async (media) => {
 		const { success, message } = await createMedia(media);

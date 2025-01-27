@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import UserModel from "../models/user.model.ts";
 import validator from "validator";
 import bcrypt from "bcrypt";
+const jwt = require("jsonwebtoken");
+
 
 
 export const register = async (req: Request, res: Response): Promise<any> => {
@@ -65,6 +67,13 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 		if (!isPasswordCorrect) {
 			return res.status(401).json({ error: "Incorrect password" });
 		}
+		
+		// Gera o token JWT
+		const token = jwt.sign({ userId: user.id, email: user.email }, "SECRET_KEY", {
+			expiresIn: "1h", // Token expira em 1 hora
+		});
+
+		res.json({ token });
 
 		// Login bem-sucedido
 		return res.status(200).json({ message: "Login successful" });
