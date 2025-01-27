@@ -45,7 +45,7 @@ function Signup() {
 				});
 				console.log(response.data);
 
-				// navigate("/login");
+				navigate("/login");
 			} else{ 
 				toast({
 					title: "Something went wrong.",
@@ -78,6 +78,14 @@ function Signup() {
 				case "A valid name is required":
 					toast({
 						title: "A valid name is required.",
+						status: "error",
+						duration: 1500,
+						isClosable: false,
+					});
+					break;
+				case "Password must be at least 6 characters long":
+					toast({
+						title: "Password must be at least 6 characters long.",
 						status: "error",
 						duration: 1500,
 						isClosable: false,
