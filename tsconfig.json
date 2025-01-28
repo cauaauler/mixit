@@ -9,7 +9,9 @@
 		"strict": true, // Ativa verificações estritas
 		"skipLibCheck": true, // Ignora verificações de tipos em definições de biblioteca
 		"allowImportingTsExtensions": true, // Permite importar arquivos .ts diretamente
-		"noEmit": true // Permite emitir arquivos compilados
+		"noEmit": true, // Permite emitir arquivos compilados
+		// "typeRoots": ["./node_modules/@types", "./backend/types", "./node_modules"],
+		// "baseUrl": "./backend" // Opcional, mas pode ajudar em importações absolutas
 	},
 	"include": ["backend/**/*.ts"], // Inclui todos os arquivos .ts na pasta backend
 	"exclude": ["node_modules"] // Exclui a pasta node_modules

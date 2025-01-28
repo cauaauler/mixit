@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import UserModel from "../models/user.model.ts";
 import validator from "validator";
 import bcrypt from "bcrypt";
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 
 
@@ -69,7 +69,7 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 		}
 		
 		// Gera o token JWT
-		const token = jwt.sign({ userId: user.id, email: user.email }, "SECRET_KEY", {
+		const token = jwt.sign({ userId: user.id, email: user.email }, "1321sadasd341dsavaasddw", {
 			expiresIn: "1h", // Token expira em 1 hora
 		});
 

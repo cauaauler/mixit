@@ -1,16 +1,18 @@
 import express from 'express';
 import { getMedia, updateMedia, createMedia, getMediaById, deleteMedia } from '../controllers/media.controller.ts';
 import { register, login } from '../controllers/user.controller.ts';
+import { authenticate } from "../middlewares/authenticate.ts";
+
 
 // Cria o roteador
 const mediaRouter = express.Router();
 
 // Rotas Media
-mediaRouter.post('/media/', createMedia);
-mediaRouter.get('/media/:id', getMediaById);
-mediaRouter.get('/media/', getMedia);
-mediaRouter.put('/media/:id', updateMedia);
-mediaRouter.delete('/media/:id', deleteMedia);
+mediaRouter.post("/media", authenticate, createMedia); // Criação de mídia
+mediaRouter.put("/media/:id", authenticate, updateMedia); // Atualização de mídia
+mediaRouter.get("/media", authenticate, getMedia); // Listar todas as mídias
+mediaRouter.get("/media/:id", authenticate, getMediaById); // Buscar mídia por ID
+mediaRouter.delete("/media/:id", authenticate, deleteMedia); // Deletar mídia
 
 //Rotas User
 mediaRouter.post('/login', login);
