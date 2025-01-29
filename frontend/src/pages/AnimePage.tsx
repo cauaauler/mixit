@@ -79,7 +79,7 @@ function AnimePage() {
 			navigate("/login"); // Redireciona para login se não estiver autenticado
 		} else {
 			axios
-				.get("http://localhost:5000/api/validate-token", {
+				.get("http://localhost:5000/api/authenticate", {
 					headers: {
 						Authorization: `Bearer ${token}`, // Envia o token no cabeçalho
 					},
@@ -91,6 +91,7 @@ function AnimePage() {
 				})
 				.catch((err) => {
 					console.error(err);
+					// console.log(err.data.token);
 					navigate("/login");
 				});
 		}

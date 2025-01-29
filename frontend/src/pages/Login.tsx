@@ -24,7 +24,7 @@ function Login() {
 				if (result.status === 200) {
 					// Armazena o token JWT no localStorage
 					localStorage.setItem("userToken", result.data.token);
-					navigate("/AnimePage");
+					navigate("/");
 				} else {
 					alert("You are not registered for this service.");
 				}
