@@ -14,12 +14,14 @@ mediaRouter.get("/media", authenticate, getMedia); // Listar todas as mídias
 mediaRouter.get("/media/:id", authenticate, getMediaById); // Buscar mídia por ID
 mediaRouter.delete("/media/:id", authenticate, deleteMedia); // Deletar mídia
 
-//Middleware
-// mediaRouter.get("/authenticate", authenticate);
+
 
 //Rotas User
 mediaRouter.post('/login', login);
 mediaRouter.post('/signup', register);
+
+//Middleware
+mediaRouter.get("/authenticate", authenticate);
 
 // Exporta o roteador
 export default mediaRouter;

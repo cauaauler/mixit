@@ -72,30 +72,44 @@ function AnimePage() {
 
 	const navigate = useNavigate();
 
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+   	// const navigate = useNavigate();
+
 	useEffect(() => {
 		const token = localStorage.getItem("userToken");
 
 		if (!token) {
-			navigate("/login"); // Redireciona para login se não estiver autenticado
-		} else {
-			axios
-				.get("http://localhost:5000/api/authenticate", {
-					headers: {
-						Authorization: `Bearer ${token}`, // Envia o token no cabeçalho
-					},
-				})
-				.then((response) => {
-					if (response.status !== 200) {
-						navigate("/login");
-					}
-				})
-				.catch((err) => {
-					console.error(err);
-					// console.log(err.data.token);
-					navigate("/login");
-				});
+			navigate("/login");
+			return; // Evita execução desnecessária
 		}
+
+		const fetchAuth = async () => {
+			try {
+				// await axios.get("http://localhost:5000/api/authenticate", {
+				// 	headers: { Authorization: `Bearer ${token}` },
+				// });
+			} catch (error) {
+				console.error("Erro na autenticação:", error);
+				navigate("/login");
+			}
+		};
+
+		fetchAuth();
+
+		// Opcional: Retorno para evitar memory leak
+		return () => {
+			// Cancelamento de requisição poderia ser adicionado aqui, se necessário
+		};
 	}, [navigate]);
+
+	// return null; // Componente sem renderização
+// };
+
+// export default AuthCheck;
+
 
 
 	const addMedia = async (media) => {
