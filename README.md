@@ -8,6 +8,8 @@ Anotações:
 
 3- Sessões.
 
+4 - Quando eu logo o backend cai, ele está enviando o post duas vezes, ver onde isso está acontecendo.
+
 
 APIs: 
 
