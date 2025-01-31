@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useMediaStore } from "../store/media.ts";
+import { jwtDecode } from "jwt-decode";
 
 const urlAnime = "https://anilist.co/anime/";
 
@@ -72,11 +73,11 @@ function AnimePage() {
 
 	const navigate = useNavigate();
 
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+	// import { useEffect } from "react";
+	// import { useNavigate } from "react-router-dom";
+	// import axios from "axios";
 
-   	// const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	useEffect(() => {
 		const token = localStorage.getItem("userToken");
@@ -88,9 +89,10 @@ function AnimePage() {
 
 		const fetchAuth = async () => {
 			try {
-				// await axios.get("http://localhost:5000/api/authenticate", {
-				// 	headers: { Authorization: `Bearer ${token}` },
-				// });
+				//aqui não tem verificação, mas funciona
+				console.log(token);
+				const decoded = jwtDecode(token); // Usa jwtDecode no lugar de jwt.verify
+				console.log(decoded);
 			} catch (error) {
 				console.error("Erro na autenticação:", error);
 				navigate("/login");
@@ -106,11 +108,9 @@ function AnimePage() {
 	}, [navigate]);
 
 	// return null; // Componente sem renderização
-// };
+	// };
 
-// export default AuthCheck;
-
-
+	// export default AuthCheck;
 
 	const addMedia = async (media) => {
 		const { success, message } = await createMedia(media);
