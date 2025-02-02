@@ -23,7 +23,9 @@ function Login() {
 			.then((result) => {
 				if (result.status === 200) {
 					// Armazena o token JWT no localStorage
-					localStorage.setItem("userToken", result.data.token);
+					// console.log("Token:", result.data.token);
+					const expiresIn = new Date().getTime() + 3600000; // 1 hora
+					localStorage.setItem("userToken", JSON.stringify({ token: result.data.token, expires: expiresIn }));
 					navigate("/");
 				} else {
 					alert("You are not registered for this service.");

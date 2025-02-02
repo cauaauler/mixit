@@ -73,10 +73,10 @@ export const login = async (req: Request, res: Response): Promise<any> => {
 			expiresIn: "1h", // Token expira em 1 hora
 		});
 
-		res.json({ token });
+		return res.status(200);
 
 		// Login bem-sucedido
-		return res.status(200).json({ message: "Login successful" });
+		// return res.status(200).json({ message: "Login successful" });
 	} catch (error) {
 		console.error("Error during login:", error);
 		return res.status(500).json({ error: "Internal server error" });
