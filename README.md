@@ -10,6 +10,8 @@ Anotações:
 
 4 - Quando eu logo o backend cai, ele está enviando o post duas vezes, ver onde isso está acontecendo.
 
+5 - Resolver o 4 antes de qualquer coisa.
+
 
 APIs: 
 
