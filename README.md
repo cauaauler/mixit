@@ -4,7 +4,7 @@ Anotações:
 
 1- Mudar o nome.
 
-2- Separar os tipos de media. Anime(Não sei se filme de anime entra aqui, preciso ver como a api funciona), Manga, Filme, Série, Livros e Jogos. Músicas não vou colocar(a princípio) pq tem muitas bibliotecas de música que permitem não só elencar mas também escutar.
+2- Separar os tipos de media. Anime(Não sei se filme de anime entra aqui, preciso ver como a api funciona), Manga, Filme, Série, Livros e Jogos.
 
 3- Sessões.
 
