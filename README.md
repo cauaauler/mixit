@@ -25,8 +25,4 @@ AXIOS - https://axios-http.com/ptbr/
 <br>
 DOTENV - https://www.npmjs.com/package/dotenv
 
-P.S.
-<br>
-Feliz Natal 🎅 
-<br>
-Feliz Ano Novo ⭐ -- Começando o ano bem, consegui consumir a primeira API :)
+
